@@ -1,7 +1,7 @@
 module.exports = {
   presets: [
     [
-      '@quasar/babel-preset-app', {
+      '@babel/env', {
       // for tree shacking
       modules: false,
     }],
