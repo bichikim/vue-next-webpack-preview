@@ -1,6 +1,7 @@
 import Config from 'webpack-chain'
 import VueLoaderPlugin from 'vue-loader/dist/plugin'
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+
+
 
 export function vueConfig(config: Config) {
   config.module.rule('vue')
@@ -87,6 +88,7 @@ interface TsConfigOptions {
  * @param options
  */
 export function tsConfig(config: Config, options: TsConfigOptions = {}): Config {
+  const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
   const {typeChecker = true} = options
   config.resolve.extensions.add('.ts').add('.tsx')
   config.module.rule('ts')
@@ -170,5 +172,11 @@ export function aliasConfig(config: Config, options: AliasOptions = {}): Config 
     alias.set('@', 'src')
   }
 
+  return config
+}
+
+export function hardCache(config: Config) {
+  const HardSourceWebpackPlugin  = require('hard-source-webpack-plugin')
+  config.plugin('hard-source').use(new HardSourceWebpackPlugin())
   return config
 }

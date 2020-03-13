@@ -2,7 +2,15 @@ import path from 'path'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import Config from 'webpack-chain'
 // noinspection TypeScriptPreferShortImport
-import {vueConfig, tsConfig, urlConfig, cssConfig, pugConfig, aliasConfig} from './webpack-chains'
+import {
+  vueConfig,
+  tsConfig,
+  urlConfig,
+  cssConfig,
+  pugConfig,
+  aliasConfig,
+  hardCache,
+} from './webpack-chains'
 
 interface EnvOptions {
   prod?: boolean
@@ -43,7 +51,9 @@ export const chainConfig = (env: EnvOptions = {}): Config => {
 
   urlConfig(config)
 
-  // pugConfig(config)
+  hardCache(config)
+
+  pugConfig(config)
 
   return config
 }
