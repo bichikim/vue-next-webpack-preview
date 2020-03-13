@@ -1,9 +1,14 @@
 import Config from 'webpack-chain'
-import VueLoaderPlugin from 'vue-loader/dist/plugin'
+import path from 'path'
 
 
+
+function esModule(module: any) {
+  return module.default || module
+}
 
 export function vueConfig(config: Config) {
+  const VueLoaderPlugin = require('vue-loader/dist/plugin')
   config.module.rule('vue')
     .test(/\.vue$/)
     .use('vue-loader')
@@ -24,6 +29,9 @@ export function pugConfig(config): Config {
     .resourceQuery(/^\?vue/)
     .use('pug-plain')
     .loader('pug-plain-loader')
+    .end()
+    .use('pug-indent-fix')
+    .loader(path.resolve(__dirname, './pug-indent-fix-loader.ts'))
     .end()
     .end()
 

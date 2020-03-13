@@ -1,7 +1,8 @@
-<template>
-  <img src="./logo.png">
-  <h1>Hello Vue 3!</h1>
-  <button @click="inc">Clicked {{ count }} times.</button>
+<template lang="pug">
+  img(src="./logo.png")
+  h1 Hello Vue 3!
+    h2 hoho
+  button(@click="inc") Clicked {{ count }} times
 </template>
 
 <script>

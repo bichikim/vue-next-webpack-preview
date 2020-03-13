@@ -1,5 +1,4 @@
 import path from 'path'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import Config from 'webpack-chain'
 // noinspection TypeScriptPreferShortImport
 import {
@@ -50,8 +49,6 @@ export const chainConfig = (env: EnvOptions = {}): Config => {
   cssConfig(config)
 
   urlConfig(config)
-
-  hardCache(config)
 
   pugConfig(config)
 
