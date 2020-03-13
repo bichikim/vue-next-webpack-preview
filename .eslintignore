@@ -1,0 +1,5 @@
+coverage/
+public/*.js
+dist/*.js
+declarations/
+
