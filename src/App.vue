@@ -2,11 +2,11 @@
   img(src="./logo.png")
   h1 Hello Vue 3!
     h2 hoho
-  button(@click="inc") Clicked {{ count }} times
+  button(@click="inc") Clicked {{ count }} times {{nameCount}}
 </template>
 
 <script lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 export default {
   setup() {
@@ -14,8 +14,13 @@ export default {
     const inc = () => {
       count.value++
     }
+    const nameCount = computed((ctx) => {
+      console.log(ctx)
+      return `foo ${count.value}`
+    })
 
     return {
+      nameCount,
       count,
       inc
     }
