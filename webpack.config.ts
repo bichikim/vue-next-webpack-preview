@@ -8,7 +8,7 @@ import {
   cssConfig,
   pugConfig,
   aliasConfig,
-  hardCache,
+  stylusConfig,
 } from './webpack-chains'
 
 interface EnvOptions {
@@ -51,6 +51,8 @@ export const chainConfig = (env: EnvOptions = {}): Config => {
   urlConfig(config)
 
   pugConfig(config)
+
+  stylusConfig(config)
 
   return config
 }

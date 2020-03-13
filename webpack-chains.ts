@@ -123,12 +123,11 @@ export function tsConfig(config: Config, options: TsConfigOptions = {}): Config 
  * @param config
  * @return {*}
  */
-function stylusConfig(config) {
+export function stylusConfig(config) {
   config.resolve.extensions.add('.styl').add('stylus')
   config.module.rule('stylus')
     .test(/\.styl(us)?$/)
-    .end()
-    .use('css-loader')
+    .use('css')
     .loader('css-loader')
     .end()
     .use('stylus')
